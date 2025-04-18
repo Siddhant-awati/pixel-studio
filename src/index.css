@@ -1,10 +1,21 @@
+div#root {
+  background-color: #fee8ff;
+}
 .toolbar-wrapper {
   max-width: 600px;
   padding: 30px;
   box-shadow: 0px 0px 5px 1px #c6c7c8;
+  background-color: #fff;
+}
+header.header {
+  background-color: #27296d;
+  color: #fff;
+  text-align: center;
+  font-size: 2rem;
+  padding: 20px 0;
 }
 footer.footer {
-  background-color: #212529;
+  background-color: #5e63b6;
   padding: 1.5rem;
   text-align: center;
   color: #ffffff;

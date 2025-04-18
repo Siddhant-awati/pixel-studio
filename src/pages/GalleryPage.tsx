@@ -27,7 +27,7 @@ const GalleryPage: React.FC = () => {
 
   return (
     <Container className="py-4">
-      <h1 className="mb-4">Pixel Studio</h1>
+      <h2 className="mb-4">Image Gallery</h2>
       {loading && (
         <Spinner animation="border" className="d-block mx-auto my-4" />
       )}
