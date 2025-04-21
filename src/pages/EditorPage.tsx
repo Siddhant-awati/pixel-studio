@@ -25,11 +25,13 @@ const EditorPage: React.FC = () => {
 
   if (loading)
     return (
-      <Spinner
-        animation="border"
-        className="d-block mx-auto my-4"
-        role="status"
-      />
+      <div className="spinner-overlay">
+        <Spinner
+          animation="border"
+          className="d-block mx-auto my-4"
+          role="status"
+        />
+      </div>
     );
   if (error || !image)
     return (

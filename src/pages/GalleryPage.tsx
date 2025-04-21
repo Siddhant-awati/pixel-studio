@@ -29,11 +29,13 @@ const GalleryPage: React.FC = () => {
     <Container className="py-4">
       <h2 className="mb-4">Image Gallery</h2>
       {loading && (
-        <Spinner
-          animation="border"
-          className="d-block mx-auto my-4"
-          role="status"
-        />
+        <div className="spinner-overlay">
+          <Spinner
+            animation="border"
+            className="d-block mx-auto my-4"
+            role="status"
+          />
+        </div>
       )}
       {error && (
         <Alert variant="danger" role="alert">
