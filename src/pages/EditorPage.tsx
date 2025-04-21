@@ -24,9 +24,19 @@ const EditorPage: React.FC = () => {
   };
 
   if (loading)
-    return <Spinner animation="border" className="d-block mx-auto my-4" />;
+    return (
+      <Spinner
+        animation="border"
+        className="d-block mx-auto my-4"
+        role="status"
+      />
+    );
   if (error || !image)
-    return <Alert variant="danger">{error || "Image not found"}</Alert>;
+    return (
+      <Alert variant="danger" role="alert">
+        {error || "Image not found"}
+      </Alert>
+    );
 
   return (
     <Container className="py-4">
