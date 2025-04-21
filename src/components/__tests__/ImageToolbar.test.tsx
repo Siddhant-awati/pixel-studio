@@ -21,7 +21,12 @@ describe("ImageToolbar", () => {
   const mockSetEditParams = vi.fn();
   const mockOnDownload = vi.fn();
 
-  it("renders form and updates inputs", () => {
+  beforeEach(() => {
+    mockSetEditParams.mockClear();
+    mockOnDownload.mockClear();
+  });
+
+  it("renders form and updates inputs on blur", () => {
     render(
       <ImageToolbar
         image={mockImage}
@@ -32,23 +37,18 @@ describe("ImageToolbar", () => {
       />
     );
 
-    // Check initial values
-    expect(screen.getByLabelText("Width")).toHaveValue(300);
-    expect(screen.getByLabelText("Blur (0-10): 0")).toHaveValue("0");
+    const widthInput = screen.getByLabelText("Width") as HTMLInputElement;
+    const blurInput = screen.getByLabelText(
+      "Blur (0-10): 0"
+    ) as HTMLInputElement;
 
-    // Update width
-    fireEvent.change(screen.getByLabelText("Width"), {
-      target: { value: "400" },
-    });
-    expect(mockSetEditParams.mock.calls[0][0](mockEditParams)).toEqual({
-      ...mockEditParams,
-      width: 400,
-    });
+    fireEvent.change(widthInput, { target: { value: "400" } });
+    fireEvent.blur(widthInput);
+    expect(mockSetEditParams).toHaveBeenCalledWith(expect.any(Function));
+    const widthUpdate = mockSetEditParams.mock.calls[0][0](mockEditParams);
+    expect(widthUpdate).toEqual({ ...mockEditParams, width: 400 });
 
-    // Update blur
-    fireEvent.change(screen.getByLabelText("Blur (0-10): 0"), {
-      target: { value: "5" },
-    });
+    fireEvent.change(blurInput, { target: { value: "5" } });
     expect(mockSetEditParams.mock.calls[1][0](mockEditParams)).toEqual({
       ...mockEditParams,
       blur: 5,

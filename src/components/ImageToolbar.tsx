@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Form, Button, Image } from "react-bootstrap";
 import { ImageType, ImageEditParamsType } from "../types/types";
 
@@ -16,8 +17,10 @@ const ImageToolbar: React.FC<ImageEditorFormProps> = ({
   setEditParams,
   onDownload,
 }) => {
+  const [localWidth, setLocalWidth] = useState(editParams.width);
+  const [localHeight, setLocalHeight] = useState(editParams.height);
+
   const handleParamChange = (key: keyof ImageEditParamsType, value: any) => {
-    console.log("handleParamChange : ", key, value);
     setEditParams((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -36,29 +39,29 @@ const ImageToolbar: React.FC<ImageEditorFormProps> = ({
 
   return (
     <div className="mx-auto toolbar-wrapper">
-      <h2 className="mb-3">Image Toolbar</h2>
+      <h2 className="mb-4">Image Toolbar</h2>
       <Form>
-        <Form.Group controlId="width" className="mb-3">
+        <Form.Group controlId="width" className="mb-4">
           <Form.Label>Width</Form.Label>
           <Form.Control
             type="number"
-            value={editParams.width}
-            onChange={(e) =>
-              handleParamChange("width", parseInt(e.target.value) || 300)
-            }
+            value={localWidth}
+            onChange={(e) => setLocalWidth(parseInt(e.target.value) || 0)}
+            onBlur={() => handleParamChange("width", localWidth)}
           />
         </Form.Group>
-        <Form.Group controlId="height" className="mb-3">
+
+        <Form.Group controlId="height" className="mb-4">
           <Form.Label>Height</Form.Label>
           <Form.Control
             type="number"
-            value={editParams.height}
-            onChange={(e) =>
-              handleParamChange("height", parseInt(e.target.value) || 200)
-            }
+            value={localHeight}
+            onChange={(e) => setLocalHeight(parseInt(e.target.value) || 0)}
+            onBlur={() => handleParamChange("height", localHeight)}
           />
         </Form.Group>
-        <Form.Group controlId="grayscale" className="mb-3">
+
+        <Form.Group controlId="grayscale" className="mb-4">
           <Form.Check
             type="switch"
             label="Grayscale"
@@ -66,7 +69,8 @@ const ImageToolbar: React.FC<ImageEditorFormProps> = ({
             onChange={(e) => handleParamChange("grayscale", e.target.checked)}
           />
         </Form.Group>
-        <Form.Group controlId="blur" className="mb-3">
+
+        <Form.Group controlId="blur" className="mb-4">
           <Form.Label>Blur (0-10): {editParams.blur}</Form.Label>
           <Form.Range
             value={editParams.blur}
@@ -78,6 +82,7 @@ const ImageToolbar: React.FC<ImageEditorFormProps> = ({
             step={1}
           />
         </Form.Group>
+
         <div className="d-flex gap-2">
           <Button variant="primary" onClick={handleSubmit}>
             Download
@@ -92,7 +97,7 @@ const ImageToolbar: React.FC<ImageEditorFormProps> = ({
         src={generateImageUrl()}
         alt={`Edited image by ${image.author}`}
         fluid
-        className="mb-3"
+        className="mb-4"
       />
     </div>
   );

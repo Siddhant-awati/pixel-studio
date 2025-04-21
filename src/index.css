@@ -2,10 +2,13 @@ div#root {
   background-color: #fee8ff;
 }
 .toolbar-wrapper {
-  max-width: 600px;
-  padding: 30px;
+  padding: 40px;
+  margin-top: 40px;
   box-shadow: 0px 0px 5px 1px #c6c7c8;
   background-color: #fff;
+}
+.toolbar-wrapper form {
+  max-width: 500px;
 }
 header.header {
   background-color: #27296d;
