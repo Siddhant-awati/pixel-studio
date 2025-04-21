@@ -29,9 +29,17 @@ const GalleryPage: React.FC = () => {
     <Container className="py-4">
       <h2 className="mb-4">Image Gallery</h2>
       {loading && (
-        <Spinner animation="border" className="d-block mx-auto my-4" />
+        <Spinner
+          animation="border"
+          className="d-block mx-auto my-4"
+          role="status"
+        />
       )}
-      {error && <Alert variant="danger">{error}</Alert>}
+      {error && (
+        <Alert variant="danger" role="alert">
+          {error}
+        </Alert>
+      )}
 
       <Pagination className="justify-content-center mt-4">
         {[...Array(10)].map((_, idx) => (

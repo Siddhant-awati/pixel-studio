@@ -17,6 +17,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ image, onClick }) => {
         variant="top"
         src={`https://picsum.photos/id/${image.id}/300/200`}
         alt={`Image by ${image.author}`}
+        role="img"
       />
       <Card.Body>
         <Card.Text>Author: {image.author}</Card.Text>
