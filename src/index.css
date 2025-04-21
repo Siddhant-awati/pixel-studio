@@ -2,13 +2,16 @@ div#root {
   background-color: #fee8ff;
 }
 .toolbar-wrapper {
-  padding: 40px;
-  margin-top: 40px;
+  padding: 20px;
+  margin-top: 20px;
   box-shadow: 0px 0px 5px 1px #c6c7c8;
   background-color: #fff;
 }
 .toolbar-wrapper form {
-  max-width: 500px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #dfdfdf;
 }
 header.header {
   background-color: #27296d;
@@ -34,4 +37,10 @@ footer.footer {
   align-items: center;
   justify-content: center;
   z-index: 9999;
+}
+.align-center {
+  text-align: center;
+}
+.align-left {
+  text-align: left;
 }

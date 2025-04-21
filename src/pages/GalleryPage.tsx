@@ -27,7 +27,7 @@ const GalleryPage: React.FC = () => {
 
   return (
     <Container className="py-4">
-      <h2 className="mb-4">Image Gallery</h2>
+      <h3 className="mb-4">Image Gallery</h3>
       {loading && (
         <div className="spinner-overlay">
           <Spinner
